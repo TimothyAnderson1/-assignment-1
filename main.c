@@ -1,8 +1,5 @@
 #include <stdio.h>
 
 int main()  {
-    dbgdb
-    dfbnhu
-    fdjbi
-    dfjbj
+   printf("helo");
 }
