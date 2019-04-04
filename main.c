@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
+#include <string.h>
+
 void menu(void);                        //Menu funcion     
 
 void EnRot(void);                       //Encription of rotaion cipher with key, function
@@ -15,7 +16,7 @@ int main()
 }
 
 void menu(void) {
-    char choice, flag = 0;
+    char choice;
     printf("Please select an program to run: \n");
     printf("\n1. Encryption of a message with a rotation cipher given the message text and rotation amount\n");
     printf("\n2. Decryption of a message encrypted with a rotation cipher given cipher text and rotation amount\n");
@@ -25,21 +26,26 @@ void menu(void) {
     printf("\n6. Decryption of a message encrypted with a substitution cipher given cipher text only\n");
     scanf("%c", &choice);
     switch(choice)  {
-        case '1': EnRot(); break;
-        case '2': DeRot(); break;
+        case '1': EnRot(); break;   
+        case '2': DeRot(); break;   
         case '3': EnSub(); break;
         case '4': DeSub(); break;
         case '5': EnRot0Key(); break;
         case '6': DeSub0Key();  break;
-        default: printf("Unknown option %c\nPlease enter 1, 2, 3, 4, 5, or 6\nPress 0 button to restart\n", choice); flag=1;
-        }
-        if(flag==1) {
-            clrscr();
+        default: printf("Unknown option %c\nPlease enter 1, 2, 3, 4, 5, or 6\nPress 0 button to restart\n", choice);
         }
 }
 
 void EnRot(void)    {
-    printf("hello 1");
+    char str[100];
+    printf("Enter a message to be encrypted: \n");
+    scanf("%s", str);
+    str[0] = 
+    
+    //scanf("%[^\n]s",str);
+    //fgets(str, 100, stdin);
+    printf("Reads: %s\n", str);
+    
 }
 
 
@@ -66,6 +72,21 @@ void EnRot0Key(void)    {
 void DeSub0Key(void)    {
     printf("hello 6");
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
