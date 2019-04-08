@@ -18,11 +18,11 @@ int main()
 void menu(void) {
     char choice;
     printf("Please select an program to run: \n");
-    printf("\n1. Encryption of a message with a rotation cipher given the message text and rotation amount\n");
-    printf("\n2. Decryption of a message encrypted with a rotation cipher given cipher text and rotation amount\n");
-    printf("\n3. Encryption of a message with a substitution cipher given message text and alphabet substitution\n");
-    printf("\n4. Decryption of a message encrypted with a substitution cipher given cipher text and substitutions\n");
-    printf("\n5. Decryption of a message encrypted with a rotation cipher given cipher text only\n");
+    printf("\n1. Encryption of a message with a rotation cipher given the message text and rotation amount");
+    printf("\n2. Decryption of a message encrypted with a rotation cipher given cipher text and rotation amount");
+    printf("\n3. Encryption of a message with a substitution cipher given message text and alphabet substitution");
+    printf("\n4. Decryption of a message encrypted with a substitution cipher given cipher text and substitutions");
+    printf("\n5. Decryption of a message encrypted with a rotation cipher given cipher text only");
     printf("\n6. Decryption of a message encrypted with a substitution cipher given cipher text only\n");
     scanf("%c", &choice);
     switch(choice)  {
@@ -38,15 +38,42 @@ void menu(void) {
 
 void EnRot(void)    {
     char str[100];
+    int key, i;
     printf("Enter a message to be encrypted: \n");
-    scanf("%s", str);
-    str[0] = 
-    
-    //scanf("%[^\n]s",str);
+    //scanf("%s", str);
+     
+    scanf(" %[^\n]%*c",str);
     //fgets(str, 100, stdin);
-    printf("Reads: %s\n", str);
+    //printf("Reads: %s\n", str);
+    printf("Enter a key to rotate message:\n");
+    scanf("%d", &key);
+    
+    while( key < 0 || key > 25)   {
+        printf("Please enter a key between 0 and 26:");
+        scanf("%d", &key);
+    }
+    
+        for(i = 0; i < strlen(str); i++)  {
+            if((int)str[i] >= 97 && (int)str[i] <= 122) {
+                if((int)str[i] + key >122) {
+                    str[i] -= 26;
+                }
+                str[i] = str[i] - 32 + key;
+            }
+            else if((int)str[i] >= 65 && (int)str[i] <= 90) {
+                if((int)str[i] + key > 90)  {
+                    str[i] -= 26;
+                }
+                str[i] = str[i] + key;
+            }
+        }
+        
+    printf("Encrypted code: %s", str);
     
 }
+
+
+
 
 
 void DeRot(void)    {
@@ -72,35 +99,5 @@ void EnRot0Key(void)    {
 void DeSub0Key(void)    {
     printf("hello 6");
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
