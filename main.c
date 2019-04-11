@@ -37,7 +37,7 @@ void menu(void) {
         }
 }
 
-/******************************************************************************/
+/******************************************************************************!!!!!!!MAYBE NEED TO FIX THIS!!!!!!!*/
 
 void EnRot(void)    {
     char str[100];
@@ -110,15 +110,26 @@ void DeRot(void)    {
 
 /******************************************************************************/
 
+
 void EnSub(void)    {
-        char str[100], key[100];
+    char str[100], key[100];
     int count = 0, i = 0, x= 65;
-    printf("Enter a message to be encrypted: \n");
-     scanf(" %[^\n]%*c",str);
-     
     
-    printf("Enter: \n");
+    printf("Enter a message to be encrypted: \n");
+    scanf(" %[^\n]%*c",str);
+    for(i = 0; i < strlen(str); i++)    {
+        if(str[i] >= 97 && str[i] <=122)    {
+            str[i] -= 32;
+        }
+    } 
+    
+    printf("Enter the substitution key: \n");
     scanf(" %[^\n]%*c",key);
+    for(i = 0; i < strlen(key); i++)    {
+        if(key[i] >= 97 && key[i] <=122)    {
+            key[i] -= 32;
+        }
+    }
     
     for(i = 0; i < strlen(str); i++)    {
         count = 0;
@@ -130,13 +141,46 @@ void EnSub(void)    {
             count++;
         }
     }
-    printf("The encrypted code is: %s", str);
+    printf("The Decrypted code is: %s", str);
 }
+
+
+/******************************************************************************/
 
 
 void DeSub(void)    {
-    printf("hello 4");
+    char str[100], key[100];
+        int count = 0, i = 0;
+        
+        printf("Enter a message to be Decrypted: \n");
+        scanf(" %[^\n]%*c",str);
+        for(i = 0; i < strlen(str); i++)    {
+            if(str[i] >= 97 && str[i] <=122)    {
+                str[i] -= 32;
+            }
+        } 
+        
+        printf("Enter the substitution key: \n");
+        scanf(" %[^\n]%*c",key);
+        for(i = 0; i < strlen(key); i++)    {
+            if(key[i] >= 97 && key[i] <=122)    {
+                key[i] -= 32;
+            }
+        }
+        
+        for(i = 0; i < strlen(str); i++) {
+            for(count = 0; count < strlen(key); count++) {
+                if(str[i] == key[count])    {
+                    str[i] = 65 + count;
+                    break;
+                }
+            }
+        }
+        printf("The encrypted code is: %s", str);
 }
+
+
+/******************************************************************************/
 
 
 void EnRot0Key(void)    {
@@ -147,6 +191,9 @@ void EnRot0Key(void)    {
 void DeSub0Key(void)    {
     printf("hello 6");
 }
+
+
+
 
 
 
