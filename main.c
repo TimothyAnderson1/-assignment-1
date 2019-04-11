@@ -7,7 +7,7 @@ void EnRot(void);                       //Encription of rotaion cipher with key,
 void DeRot(void);                       //Decription of rotaion cipher with key, function
 void EnSub(void);                       //Encription of substitution cipher with key, function 
 void DeSub(void);                       //Decription of substitution cipher with key, function
-void EnRot0Key(void);                   //Encription of rotation cipher without key, function
+void DeRot0Key(void);                   //Decription of rotation cipher without key, function
 void DeSub0Key(void);                   //Decription of substitution cipher without key, function
 
 
@@ -31,7 +31,7 @@ void menu(void) {
         case '2': DeRot(); break;   
         case '3': EnSub(); break;
         case '4': DeSub(); break;
-        case '5': EnRot0Key(); break;
+        case '5': DeRot0Key(); break;
         case '6': DeSub0Key();  break;
         default: printf("Unknown option %c\nPlease enter 1, 2, 3, 4, 5, or 6\nPress 0 button to restart\n", choice);
         }
@@ -44,7 +44,7 @@ void EnRot(void)    {
     int key, i;
     printf("Enter a message to be Encrypted: \n");
     scanf(" %[^\n]%*c",str);
-        printf("Enter a key to totate the message:\n");
+    printf("Enter a key to totate the message:\n");
     scanf("%d", &key);
     
     while( key < 0 || key > 25)   {
@@ -67,7 +67,7 @@ void EnRot(void)    {
             }
         }
         
-    printf("Encrypted message: %s", str);
+    printf("Encrypted message: %s\n", str);
 }
 
 
@@ -182,15 +182,22 @@ void DeSub(void)    {
 /******************************************************************************/
 
 
-void EnRot0Key(void)    {
-    printf("hello 5");
+void DeRot0Key(void)    {
+    char str[100];
+    int i = 0, count;
+    printf("Enter a message to be decrypted: \n");
+    scanf(" %[^\n]%*c",str);
+    for(count = 0; count < 25; count++) {
+        for(i = 0; i < strlen(str); i++) {
+            str[i] += count;
+        }
+        printf("%s",str);
+    }
 }
-
 
 void DeSub0Key(void)    {
     printf("hello 6");
 }
-
 
 
 
