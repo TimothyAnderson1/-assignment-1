@@ -183,20 +183,78 @@ void DeSub(void)    {
 
 
 void DeRot0Key(void)    {
-    char str[100];
-    int i = 0, count;
+   char str[100];
+   char strWord[10][10];
+    int count = 0, i = 0, p = 0;
     printf("Enter a message to be decrypted: \n");
     scanf(" %[^\n]%*c",str);
-    for(count = 0; count < 25; count++) {
-        for(i = 0; i < strlen(str); i++) {
-            str[i] += count;
+        
+    int k,j,ctr; 
+    j=0; 
+    ctr=0;
+    for(k=0;k<=(strlen(str));k++)
+    {
+        // if space or NULL found, assign NULL into newString[ctr]
+        if(str[k]==' '||str[k]=='\0')
+        {
+            strWord[ctr][j]='\0';
+            ctr++;  //for next word
+            j=0;    //for next word, init index to 0
         }
-        printf("%s",str);
+        else
+        {
+            strWord[ctr][j]=str[k];
+            j++;
+        }
     }
+    printf(" %s\n",strWord[0]);
+    printf(" %s\n",strWord[1]);
+    
+	printf("\n");
+    
+    
+    
+    
+    FILE *input;
+    input = fopen("input.txt", "r");
+    while(!feof(input))   {
+        char c;
+        fscanf(input, "%c", &c);
+        printf("%c", c);
+    }
+    printf("\n");
+    
+    
+    
+    /*for(count = 0; count < 25; count++)  {
+
+        for(i = 0; i < strlen(str); i++)  {
+            if(str[i] >= 65 && str[i] <= 90)    {
+                if(str[i] + 1 > 90) {
+                    str[i] = str[i] - 26;
+                }
+                str[i] = str[i] + 1;
+            }
+        }
+        printf("%s\n", str);
+    }
+    */
+    
+    
 }
 
+
+
+
+
+
+
+
+
+
 void DeSub0Key(void)    {
-    printf("hello 6");
+   
+   
 }
 
 
