@@ -188,7 +188,6 @@ void DeRot0Key(void)    {
     int count = 0, i = 0, p = 0;
     printf("Enter a message to be decrypted: \n");
     scanf(" %[^\n]%*c",str);
-        
     int k,j,ctr; 
     j=0; 
     ctr=0;
@@ -209,13 +208,26 @@ void DeRot0Key(void)    {
     }
     printf(" %s\n",strWord[0]);
     printf(" %s\n",strWord[1]);
-    
-	printf("\n");
-    
+
     
     
+    char words[100000];
     
     FILE *input;
+    input = fopen("words.txt", "r");
+    fscanf(input, " %[^\n]%*c", words);
+    printf("%s", words);
+    printf("\n");
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*FILE *input;
     input = fopen("input.txt", "r");
     while(!feof(input))   {
         char c;
@@ -224,9 +236,7 @@ void DeRot0Key(void)    {
     }
     printf("\n");
     
-    
-    
-    /*for(count = 0; count < 25; count++)  {
+    for(count = 0; count < 25; count++)  {
 
         for(i = 0; i < strlen(str); i++)  {
             if(str[i] >= 65 && str[i] <= 90)    {
