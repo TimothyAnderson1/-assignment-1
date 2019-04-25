@@ -140,7 +140,7 @@ void EnSub(void)    {
             count++;
         }
     }
-    printf("The Decrypted code is: %s", str);
+    printf("The Encrypted code is: %s\n", str);
 }
 
 
@@ -206,23 +206,21 @@ void DeRot0Key(void)    {
             j++;
         }
     }
-    printf(" %s\n",strWord[0]);
-    printf(" %s\n",strWord[1]);
+    printf("%s\n",strWord[0]);
+    printf("%s\n",strWord[1]);
 
     
-    
-    char words[100000];
-    
+    /*char words[100];
     FILE *input;
     input = fopen("words.txt", "r");
-    fscanf(input, " %[^\n]%*c", words);
+    fscanf(input, "%s", words);
     printf("%s", words);
-    printf("\n");
+    *
     
     
     
     
-    
+     
     
     
     
