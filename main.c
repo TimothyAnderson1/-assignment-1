@@ -183,63 +183,49 @@ void DeSub(void)    {
 
 /***************************!!!NOT FINISHED!!!*********************************/
 void DeRot0Key(void)    {
-   char str[100];
-   char strWord[10][10];
-  
+    char str[100];
+    char strWord[10][10];
+    int k, j, nxt, i; 
     printf("Enter a message to be decrypted: \n");
     scanf(" %[^\n]%*c",str);
-    int k,j,ctr; 
+    for(i = 0; i < strlen(str); i++)    {                                           //rotaing through each character in the string
+        if(str[i] >= 97 && str[i] <=122)    {                                       //if character is a lowercase letter, adjust to uppercase
+            str[i] -= 32;
+        }
+    } 
     j=0; 
-    ctr=0;
+    nxt=0;
     for(k=0;k<=(strlen(str));k++)
-    {
-        // if space or NULL found, assign NULL into newString[ctr]
-        if(str[k]==' '||str[k]=='\0')
+    {        
+        if(str[k]==' '||str[k]=='\0')                                               //if space or NULL found, assign NULL into indvWord[nxt]
         {
-            strWord[ctr][j]='\0';
-            ctr++;  //for next word
+            strWord[nxt][j]='\0';
+            nxt++;  //for next word
             j=0;    //for next word, init index to 0
         }
         else
         {
-            strWord[ctr][j]=str[k];
+            strWord[nxt][j]=str[k];
             j++;
         }
     }
-    printf("%s\n",strWord[0]);
-    printf("%s\n",strWord[1]);
-    
+   
    
     
     
     FILE *input;
-    input = fopen("input.txt", "r");
+    input = fopen("words.txt", "r");
+    int count;
     char word[100];
-    char indvWord[10][10];
-    fscanf(input," %[^\n]%*c",word);
-    int k1,j1,ctr1; 
-    j1=0; 
-    ctr1=0;
-    for(k1=0;k1<=(strlen(word));k1++)
-    {
-        // if space or NULL found, assign NULL into newString[ctr]
-        if(word[k1]==' '||word[k1]=='\0')
-        {
-            indvWord[ctr1][j1]='\0';
-            ctr1++;  //for next word
-            j1=0;    //for next word, init index to 0
-        }
-        else
-        {
-            indvWord[ctr1][j]=word[k1];
-            j++;
-        }
+    char indvWord[10000][25];
+    for(count = 0; count < 10000; count++)  {
+        fscanf(input,"%s",indvWord[count]);
     }
-    printf("%s\n",indvWord[0]);
-    printf("%s\n",indvWord[2]);
+  
     
-    /*for(count = 0; count < 25; count++)  {
-
+    
+    int rot, a, b, flag = 0;
+    for(rot = 0; rot < 25; rot++)  {
         for(i = 0; i < strlen(str); i++)  {
             if(str[i] >= 65 && str[i] <= 90)    {
                 if(str[i] + 1 > 90) {
@@ -248,13 +234,32 @@ void DeRot0Key(void)    {
                 str[i] = str[i] + 1;
             }
         }
-        printf("%s\n", str);
+        for(a = 0; a < 1; a++)  {
+            for(b = 0; b < 10000; b++)  {
+                if(strcmp(strWord[a],indvWord[b]) == 0)  {
+                    flag++; 
+                    break;
+                }
+                
+                
+            }   
+            if(flag == 0)   {
+                break;
+            }
+            
+        }    
+        
+        if(flag == 2)   {
+            printf("Decrypted message is %s\n", str);
+            break;
+        }
+        
+        
     }
-    */
+    
     
     
 }
-
 
 /******************************************************************************/
 
