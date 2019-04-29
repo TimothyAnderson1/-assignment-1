@@ -1,3 +1,7 @@
+/*The following code includes functions which are able to encrypt and decrypt substution and rotatoin cyphers with a key.*/
+/*These functions are able to be selected from a userface interface once the program is run.*/
+/*!!!!!!!NOTE THIS PROGRAM MAY HAVE TO BE COMPILED TWICE TO RUN!!!!!!!!!*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -44,7 +48,7 @@ void EnRot(void)    {
     int key, i;                                                                     //introducing rotation key(key) and count variable(i)
     printf("Enter a message to be Encrypted: \n");                                  
     scanf(" %[^\n]%*c",str);                                                        //scaning input string with white spaces and assigning to str
-    printf("Enter a key to totate the message:\n");
+    printf("Enter a key to rotate the message:\n");
     scanf("%d", &key);                                                              //scaning rotation key
     
     while( key < 0 || key > 25)   {                                                 //if key is not between 26 and 0 key will need to be re entered
@@ -102,7 +106,7 @@ void DeRot(void)    {
             }
         }
         
-    printf("Decrypted code: %s", str);                                              //print decrypted string
+    printf("Decrypted code: %s\n", str);                                              //print decrypted string
     
 }
 
@@ -174,7 +178,7 @@ void DeSub(void)    {
             }
         }
     }
-    printf("The Decrypted code is: %s", str);                                       //print decrypted string(str)
+    printf("The Decrypted code is: %s\n", str);                                       //print decrypted string(str)
 }
 
 
@@ -193,22 +197,7 @@ void DeRot0Key(void)    {
             str[i] -= 32;
         }
     } 
-    j=0; 
-    nxt=0;
-    for(k=0;k<=(strlen(str));k++)
-    {        
-        if(str[k]==' '||str[k]=='\0')                                               //if space or NULL found, assign NULL into indvWord[nxt]
-        {
-            strWord[nxt][j]='\0';
-            nxt++;  //for next word
-            j=0;    //for next word, init index to 0
-        }
-        else
-        {
-            strWord[nxt][j]=str[k];
-            j++;
-        }
-    }
+    
    
    
     
@@ -234,9 +223,28 @@ void DeRot0Key(void)    {
                 str[i] = str[i] + 1;
             }
         }
+        j=0; 
+        nxt=0;
+        for(k=0;k<=(strlen(str));k++)
+        {        
+            if(str[k]==' '||str[k]=='\0')                                               //if space or NULL found, assign NULL into indvWord[nxt]
+            {
+                strWord[nxt][j]='\0';
+                nxt++;  //for next word
+                j=0;    //for next word, init index to 0
+            }
+            else
+            {
+                strWord[nxt][j]=str[k];
+                j++;
+            }
+        }
+        
         for(a = 0; a < 1; a++)  {
-            for(b = 0; b < 10000; b++)  {
+            for(b = 0; b < 100000; b++)  {
+                printf("%s\n%s\n",strWord[a],indvWord[b]);
                 if(strcmp(strWord[a],indvWord[b]) == 0)  {
+                    
                     flag++; 
                     break;
                 }
@@ -249,7 +257,7 @@ void DeRot0Key(void)    {
             
         }    
         
-        if(flag == 2)   {
+        if(flag == 1)   {
             printf("Decrypted message is %s\n", str);
             break;
         }
